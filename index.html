@@ -1,73 +1,304 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lời Chào Từ Tường Vân & Thục Khanh</title>
+    <title>Dự án Boardgame: Nối Vòng Tay Lớn</title>
+    <!-- Tích hợp Tailwind CSS cho thiết kế hiện đại -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tích hợp FontAwesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cấu hình màu đỏ chủ đạo -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vietred: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c', // Đỏ chủ đạo
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        },
+                        vietgold: '#fbbf24' // Vàng sao vàng
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #333;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        h1 {
-            color: #d63384;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .names {
-            font-weight: bold;
-            color: #0d6efd;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="card">
-        <h1>Xin Chào Mọi Người! 👋</h1>
-        <p>Chúng tôi là <span class="names">Tường Vân</span> & <span class="names">Thục Khanh</span>.</p>
-        <p>Rất vui được làm quen với tất cả mọi người!</p>
-    </div>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-vietred-700">
+                        <i class="fa-solid fa-map-location-dot mr-2"></i>NỐI VÒNG TAY LỚN
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#tong-quan" class="text-gray-600 hover:text-vietred-700 font-medium transition">Tổng quan</a>
+                    <a href="#luat-choi" class="text-gray-600 hover:text-vietred-700 font-medium transition">Cơ chế chơi</a>
+                    <a href="#ket-qua" class="text-gray-600 hover:text-vietred-700 font-medium transition">Kết quả</a>
+                    <a href="#doi-ngu" class="text-gray-600 hover:text-vietred-700 font-medium transition">Đội ngũ</a>
+                    <a href="#lien-he" class="bg-vietred-700 text-white px-5 py-2 rounded-full font-medium hover:bg-vietred-800 transition shadow-lg">Trải nghiệm ngay</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-vietred-800 to-vietred-600 text-white hero-pattern relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                    Khám phá Việt Nam <br>
+                    <span class="text-vietgold">Khơi dậy niềm tự hào</span>
+                </h1>
+                <p class="text-lg md:text-xl text-red-100 mb-8 font-light">
+                    Boardgame giáo dục đột phá dành cho học sinh THPT. Học địa lý - văn hóa Việt Nam qua hành trình trải nghiệm trực quan, tương tác và đầy thú vị trên bản đồ 34 đơn vị hành chính.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#tong-quan" class="bg-white text-vietred-700 font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition shadow-lg text-lg">
+                        Tìm hiểu dự án
+                    </a>
+                    <a href="#luat-choi" class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-vietred-700 transition text-lg">
+                        Cách chơi
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Decorative Shape -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gray-50" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+    </header>
+
+    <!-- Section: Tổng quan Dự án -->
+    <section id="tong-quan" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block bg-red-100 text-vietred-700 font-semibold px-4 py-1 rounded-full mb-4 text-sm">
+                    Khoa học Xã hội & Hành vi
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Lý do hình thành dự án</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed text-lg">
+                    Lòng yêu nước được hình thành từ sự hiểu biết và gắn bó với quê hương. Thay vì tiếp thu kiến thức thụ động qua sách vở, học sinh cần một phương pháp sinh động hơn.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                    Dự án <strong>"Nối vòng tay lớn"</strong> chuyển hóa bản đồ hành chính mới nhất của Việt Nam (34 tỉnh thành) thành một không gian vận hành boardgame. Sự kết hợp giữa tư duy chiến thuật, tương tác xã hội và kiến thức văn hóa tạo nên một công cụ giáo dục giải trí mạnh mẽ.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fa-solid fa-check-circle text-vietred-600 mr-3 text-xl"></i> Thời gian chơi tiêu chuẩn: 15-20 phút
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fa-solid fa-check-circle text-vietred-600 mr-3 text-xl"></i> Dành cho 2 người chơi đối kháng
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fa-solid fa-check-circle text-vietred-600 mr-3 text-xl"></i> Tích hợp: Địa lý, Lịch sử, Văn hóa, Du lịch
+                    </li>
+                </ul>
+            </div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-vietred-600 transform translate-x-4 translate-y-4 rounded-2xl opacity-20"></div>
+                <!-- Placeholder cho hình ảnh Bàn cờ -->
+                <div class="relative bg-white border border-gray-200 rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center h-96">
+                    <i class="fa-solid fa-map text-8xl text-vietred-200 mb-4"></i>
+                    <p class="text-gray-500 font-medium">Bản đồ Việt Nam 34 Đơn vị Hành chính</p>
+                    <p class="text-xs text-gray-400 mt-2">(Hình ảnh minh họa sản phẩm thực tế)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Cơ chế chơi -->
+    <section id="luat-choi" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Lối chơi Bất đối xứng Độc đáo</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Mỗi người chơi chọn 1 trong 2 con đường chiến thắng, với bộ vật liệu và cách hoàn thành nhiệm vụ hoàn toàn khác biệt.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Xây Cầu -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-t-4 border-vietred-600 hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-red-100 text-vietred-700 rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-bridge"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Chiến thuật: Xây Cầu</h3>
+                    <p class="text-gray-600 mb-4">Hành trình kết nối các địa phương thông qua việc thu thập vật liệu xây dựng cốt lõi.</p>
+                    <ul class="space-y-2 text-sm text-gray-700 font-medium">
+                        <li><i class="fa-solid fa-cube text-vietred-500 w-5"></i> Vật liệu: Tre, Đá, Sắt, Gạch</li>
+                        <li><i class="fa-solid fa-bullseye text-vietred-500 w-5"></i> Mục tiêu: Xây đủ 3 cây cầu tại 3 miền.</li>
+                    </ul>
+                </div>
+
+                <!-- Cắm Cờ -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-t-4 border-vietgold hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-flag"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Chiến thuật: Cắm Cờ</h3>
+                    <p class="text-gray-600 mb-4">Khẳng định chủ quyền và chinh phục các địa danh bằng cách thu thập nguyên liệu dệt cờ.</p>
+                    <ul class="space-y-2 text-sm text-gray-700 font-medium">
+                        <li><i class="fa-solid fa-cube text-yellow-500 w-5"></i> Vật liệu: Chỉ, Vải, Sắt, Màu</li>
+                        <li><i class="fa-solid fa-bullseye text-yellow-500 w-5"></i> Mục tiêu: Cắm cờ tại 3 địa phương.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Các thành phần khác -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                <div class="text-center p-6">
+                    <i class="fa-solid fa-dice text-4xl text-vietred-600 mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Xúc xắc đa nhiệm</h4>
+                    <p class="text-gray-500 text-sm">Quyết định di chuyển, thu thập tài nguyên hoặc kích hoạt thẻ Sự kiện.</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fa-solid fa-bolt text-4xl text-vietred-600 mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Cơ hội & Thách thức</h4>
+                    <p class="text-gray-500 text-sm">Các thẻ bài tạo ra sự bất ngờ, lật ngược tình thế và tăng tính tương tác.</p>
+                </div>
+                <div class="text-center p-6">
+                    <i class="fa-solid fa-circle-question text-4xl text-vietred-600 mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Hỏi đáp kiến thức</h4>
+                    <p class="text-gray-500 text-sm">Trả lời đúng câu hỏi về văn hóa, địa lý để hoàn thành mục tiêu tại chặng cuối.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Kết quả -->
+    <section id="ket-qua" class="py-16 md:py-24 bg-vietred-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Hiệu quả đã được Chứng minh</h2>
+                <p class="text-red-200 max-w-2xl mx-auto">Thực nghiệm trên 40 học sinh trường THPT Nguyễn Khuyến (40 ván chơi) đã mang lại các số liệu đột phá.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-vietred-800 p-8 rounded-2xl text-center border border-vietred-700">
+                    <div class="text-4xl font-extrabold text-vietgold mb-2">87.5%</div>
+                    <div class="text-sm text-red-200">Học sinh tăng điểm kiến thức Địa lý - Văn hóa</div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="bg-vietred-800 p-8 rounded-2xl text-center border border-vietred-700">
+                    <div class="text-4xl font-extrabold text-vietgold mb-2">+2.22</div>
+                    <div class="text-sm text-red-200">Điểm trung bình tăng (từ 5.62 lên 7.84/10)</div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="bg-vietred-800 p-8 rounded-2xl text-center border border-vietred-700">
+                    <div class="text-4xl font-extrabold text-vietgold mb-2">4.52/5</div>
+                    <div class="text-sm text-red-200">Điểm đánh giá mức độ tăng tương tác xã hội</div>
+                </div>
+                <!-- Stat 4 -->
+                <div class="bg-vietred-800 p-8 rounded-2xl text-center border border-vietred-700">
+                    <div class="text-4xl font-extrabold text-vietgold mb-2">4.40/5</div>
+                    <div class="text-sm text-red-200">Khơi dậy mong muốn tiếp tục khám phá đất nước</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-lg text-red-100 font-light italic">"Trò chơi có tiềm năng khơi gợi sự tò mò, trân trọng và mong muốn chia sẻ các giá trị Việt Nam..."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Đội ngũ -->
+    <section id="doi-ngu" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Đội ngũ Thực hiện</h2>
+                <p class="text-gray-600">Dự án KHKT Trường THPT Nguyễn Khuyến, TP. Hồ Chí Minh - 2026</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Member 1 -->
+                <div class="bg-white w-full max-w-xs rounded-2xl shadow-md overflow-hidden text-center hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="h-24 bg-vietred-600"></div>
+                    <div class="relative -mt-12 mb-4">
+                        <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full border-4 border-white flex items-center justify-center text-gray-400 text-3xl">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <h3 class="font-bold text-xl text-gray-900">Nguyễn Ngọc Trúc Vân</h3>
+                        <p class="text-vietred-600 text-sm font-medium mb-3">Học sinh - Lớp 11A3</p>
+                        <p class="text-gray-500 text-sm">Đồng tác giả thiết kế cơ chế và hệ thống nội dung.</p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="bg-white w-full max-w-xs rounded-2xl shadow-md overflow-hidden text-center hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="h-24 bg-vietred-600"></div>
+                    <div class="relative -mt-12 mb-4">
+                        <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full border-4 border-white flex items-center justify-center text-gray-400 text-3xl">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <h3 class="font-bold text-xl text-gray-900">Thái Thục Khanh</h3>
+                        <p class="text-vietred-600 text-sm font-medium mb-3">Học sinh - Lớp 11A3</p>
+                        <p class="text-gray-500 text-sm">Đồng tác giả thiết kế cơ chế và phân tích dữ liệu.</p>
+                    </div>
+                </div>
+
+                <!-- Guide -->
+                <div class="bg-white w-full max-w-xs rounded-2xl shadow-md overflow-hidden text-center hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="h-24 bg-gray-800"></div>
+                    <div class="relative -mt-12 mb-4">
+                        <div class="w-24 h-24 mx-auto bg-gray-200 rounded-full border-4 border-white flex items-center justify-center text-gray-400 text-3xl">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <h3 class="font-bold text-xl text-gray-900">Thầy Nguyễn Thành Luân</h3>
+                        <p class="text-gray-800 text-sm font-medium mb-3">Giáo viên Hướng dẫn</p>
+                        <p class="text-gray-500 text-sm">Định hướng khoa học và hỗ trợ thực nghiệm giáo dục.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="lien-he" class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <span class="text-2xl font-bold text-white block mb-2">
+                        <i class="fa-solid fa-map-location-dot mr-2 text-vietred-500"></i>NỐI VÒNG TAY LỚN
+                    </span>
+                    <p class="text-gray-400 text-sm">Dự án KHKT Lĩnh vực Khoa học Xã hội và Hành vi.</p>
+                    <p class="text-gray-400 text-sm">Trường THPT Nguyễn Khuyến, TP. Hồ Chí Minh - 2026</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vietred-600 transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vietred-600 transition">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-vietred-600 transition">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2026 Bản quyền thuộc về nhóm dự án Nối Vòng Tay Lớn.
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
